@@ -1,0 +1,17 @@
+{
+  "name": "The Herts Cuisine",
+  "short_name": "Herts Cuisine",
+  "description": "Premium private chef and event catering, Nigerian and Afro Caribbean cuisine across Hertfordshire and London.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F8F5EF",
+  "theme_color": "#F8F5EF",
+  "icons": [
+    {
+      "src": "/icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

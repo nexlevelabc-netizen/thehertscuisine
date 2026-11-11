@@ -3,11 +3,13 @@ services:
     name: thehertscuisine
     runtime: node
     plan: free
-    buildCommand: npm install && npm run build
+    buildCommand: curl -fSL --retry 3 "$MEDIA_BUNDLE_URL" -o /tmp/media-bundle.tar.gz && tar xzf /tmp/media-bundle.tar.gz && npm install && npm run build
     startCommand: npm start
     envVars:
       - key: NODE_VERSION
         value: "20"
+      - key: MEDIA_BUNDLE_URL
+        value: "https://www.kimi.com/apiv2-files/sign-obj/kimi-fs%2Ffiles%2Fblob%2F96ab22af75ca833dcaa3bdba8e2f98140653608d155f5d56bb014e66470f9d8a?filename=media-bundle.tar.gz&sig=Qc52DBisH2Is5T9dGLumdYP2AXHrgRy8MDNNk2Pw7b8=&t=o"
       - key: DATABASE_URL
         sync: false
       - key: SMTP_HOST

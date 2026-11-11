@@ -8,6 +8,10 @@ interface SectionHeaderProps {
   light?: boolean;
 }
 
+/**
+ * Editorial section header: an index tag pinned to the far left, the section
+ * label pinned to the far right, and a masked display headline beneath.
+ */
 export function SectionHeader({ index, tag, title, intro, light = false }: SectionHeaderProps) {
   const lineColor = light ? "bg-ivory/25" : "bg-espresso/15";
   const tagColor = light ? "text-ivory/70" : "text-olive";

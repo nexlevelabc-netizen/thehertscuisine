@@ -8,6 +8,11 @@ interface RevealProps {
   id?: string;
 }
 
+/**
+ * Adds `is-inview` to the wrapper the first time it enters the viewport,
+ * driving the CSS mask, rise and frame transitions. Content remains fully
+ * rendered in the DOM regardless, so nothing is gated on the animation.
+ */
 export function Reveal({ children, as, className = "", threshold = 0.18, id }: RevealProps) {
   const Tag = (as ?? "div") as ElementType;
   const ref = useRef<HTMLElement | null>(null);
@@ -41,6 +46,7 @@ export function Reveal({ children, as, className = "", threshold = 0.18, id }: R
   );
 }
 
+/** Display headline revealed line by line from behind a mask. */
 export function MaskedLines({ lines, className = "" }: { lines: string[]; className?: string }) {
   return (
     <span className={className}>

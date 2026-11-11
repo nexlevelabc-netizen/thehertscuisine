@@ -30,6 +30,7 @@ export function ButtonLink({
   );
 }
 
+/** Scroll linked parallax drift for imagery. Disabled for reduced motion. */
 export function Parallax({
   children,
   className = "",
@@ -67,6 +68,7 @@ export function Parallax({
   );
 }
 
+/** Editorial page opener for interior pages. */
 export function PageHero({
   index,
   tag,

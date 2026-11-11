@@ -55,15 +55,16 @@ export async function notifyNewEnquiry(e: EnquiryEmail) {
         from: process.env.SMTP_FROM || user,
         to: ENQUIRY_INBOX,
         replyTo: e.email,
-        subject: `New Enquiry, ${e.serviceType}, ${e.eventDate}`,
+        subject: `New booking enquiry, ${e.serviceType} on ${e.eventDate}`,
         text: lines,
       });
       log.info("enquiry notification emailed", { to: ENQUIRY_INBOX });
-      return;
+      return { delivered: true as const };
     } catch (err) {
-      log.error("enquiry email failed, recorded to log instead", err);
+      log.error("enquiry email delivery failed", { error: String(err) });
     }
   }
 
-  log.info("enquiry notification queued", { enquiry: lines });
+  log.info("enquiry notification queued", { to: ENQUIRY_INBOX, body: lines });
+  return { delivered: false as const };
 }
